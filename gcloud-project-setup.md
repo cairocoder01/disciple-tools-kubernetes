@@ -55,7 +55,9 @@ The database is setup elsewhere as a Cloud SQL database so as to scale more easi
       1. Syntax: `kubectl create secret [TYPE] [NAME] [DATA]`
       1. Run: `kubectl create secret generic mysql --from-literal=password=YOUR_PASSWORD --from-literal=host=PRIVATE_IP_ADDRESS` (*Replace YOUR_PASSWORD and PRIVATE_IP_ADDRESS*)
 1. ***Set up PHP Config values***
-   1. Deploy: `kubectl create -f wordpress-configmap.yaml`
+   1. Copy either `env-vars.default.yaml` or `env-vars-multisite.default.yaml` and rename to `env-vars.yaml`. Update all values with your environment-specific values.
+   1. Execute: `kubectl create -f env-vars.yaml`
+   1. Execute: `kubectl create configmap config-files --from-file=config-files/`
 1. ***Set up WordPress***
    1. Deploy: `kubectl create -f wordpress.yaml`
    1. Wait: `kubectl get pod -l app=wordpress`

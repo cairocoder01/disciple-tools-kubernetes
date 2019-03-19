@@ -17,33 +17,29 @@ spec:
       containers:
         - image: wordpress:5.1-apache
           name: wordpress
-          env:
-          - name: WORDPRESS_DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: mysql
-                key: host
-          - name: WORDPRESS_DB_USER
-            value: wordpress
-          - name: WORDPRESS_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql
-                key: password
-          - name: PHP_INI_SCAN_DIR
-            value: :/usr/local/etc/php/conf.custom
+          # Load all environment variables from wordpress-php-config (configmap.yaml)
+          envFrom:
+          - configMapRef:
+              name: env-vars
           ports:
             - containerPort: 80
               name: wordpress
           volumeMounts:
             - name: wordpress-persistent-storage
               mountPath: /var/www/html
-            - name: php-config
+              # save wordpress-upload.ini --> /usr/local/etc/php/conf.custom/
+            - name: php-ini
               mountPath: /usr/local/etc/php/conf.custom
       volumes:
         - name: wordpress-persistent-storage
           persistentVolumeClaim:
             claimName: wordpress-volumeclaim
-        - name: php-config
+        - name: env-vars
           configMap:
-            name: wordpress-php-config
+            name: env-vars
+        - name: php-ini
+          configMap:
+            name: config-files
+            items:
+            - key: wordpress-upload.ini
+              path: wordpress-upload.ini
