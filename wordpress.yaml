@@ -27,7 +27,7 @@ spec:
           volumeMounts:
             - name: wordpress-persistent-storage
               mountPath: /var/www/html
-              # save wordpress-upload.ini --> /usr/local/etc/php/conf.custom/
+            # save wordpress-upload.ini --> /usr/local/etc/php/conf.custom/
             - name: php-ini
               mountPath: /usr/local/etc/php/conf.custom
       volumes:

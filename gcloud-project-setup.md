@@ -67,6 +67,7 @@ The database is setup elsewhere as a Cloud SQL database so as to scale more easi
 1. ***Visit WordPress site and complete setup***
    1. Using `EXTERNAL-IP` from the command `kubectl get svc -l app=wordpress`, go to...
    1. `http://EXTERNAL-IP/wp-admin/install.php`
+   1. To setup a multi-site WordPress instance, follow the [Multi-Site Setup Instructions](multisite-setup.md)
 1. [Install Disciple Tools Theme](https://github.com/DiscipleTools/disciple-tools-theme)
 
 *See [Project Deletion](gcloud-project-deletion.md) for details on deleting all of the resources above*

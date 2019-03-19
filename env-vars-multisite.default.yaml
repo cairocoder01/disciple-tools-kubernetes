@@ -11,4 +11,12 @@ data:
   WORDPRESS_CONFIG_EXTRA: |
     # Additional config for wp-config.php
     define( 'DISALLOW_FILE_EDIT', true );
+    /* Multisite */
+    define('WP_ALLOW_MULTISITE', true);
+    //define('MULTISITE', true);
+    //define('SUBDOMAIN_INSTALL', true);
+    //define('DOMAIN_CURRENT_SITE', 'replace-with-your-domain.com');
+    //define('PATH_CURRENT_SITE', '/');
+    //define('SITE_ID_CURRENT_SITE', 1);
+    //define('BLOG_ID_CURRENT_SITE', 1);
   PHP_INI_SCAN_DIR: :/usr/local/etc/php/conf.custom
