@@ -9,8 +9,8 @@ data:
   WORDPRESS_DB_PASSWORD: paste-your-db-user-password
   WORDPRESS_TABLE_PREFIX: dt_
   WORDPRESS_CONFIG_EXTRA: |
-    # Additional config for wp-config.php
     define( 'DISALLOW_FILE_EDIT', true );
+    define('JWT_AUTH_SECRET_KEY', 'generate salt from https://api.wordpress.org/secret-key/1.1/salt/');
     /* Multisite */
     define('WP_ALLOW_MULTISITE', true);
     //define('MULTISITE', true);
